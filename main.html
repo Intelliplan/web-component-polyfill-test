@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    
+    <div id="import-container">
+      <link rel="import" id="myimport" href="component/comp.html"></link>
+    </div>
+
+    <!-- webcomponents.js v 0.5.2 -->
+    <script src="libs/webcomponents.min.js"></script>
+
+    <script type="text/javascript">
+  
+      var link = document.getElementById('myimport');
+      link.addEventListener('load', function () {
+        var myImport = link.import;
+        var templateInImport = myImport.querySelector('template');
+        var templateClone = document.importNode(templateInImport.content, true);
+        document.getElementById('import-container').appendChild(templateClone);
+      });
+
+    </script>
+  </body>
+</html>      document.importNode()
+    </script>
+  </body>
+</html>
