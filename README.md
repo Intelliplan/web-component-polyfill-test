@@ -1,4 +1,4 @@
-Usage:
+## Usage
 
 Serve the repo directory over http and load main.html in a browser.
 
