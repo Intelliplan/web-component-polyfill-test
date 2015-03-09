@@ -8,11 +8,23 @@
     <script src="libs/webcomponentsjs-0.5.4/webcomponents.min.js"></script>
 
     <script type="text/javascript">
+     function swapScript(script) {
+       if (script.nodeName != 'SCRIPT')
+	 throw new Error("swapScript requires script");
+       var clone = document.createElement('script');
+       clone.appendChild( document.createTextNode(script.textContent));
+       script.parentNode.insertBefore(clone, script);
+       script.parentNode.removeChild(script);
+     };
+     
      var importScript = function () {
        var link = document.getElementById('myimport');
        var myImport = link.import;
        var templateInImport = myImport.querySelector('template');
        var templateClone = document.importNode(templateInImport.content, true);
+       var scripts = templateClone.querySelectorAll('script');
+       for (var i=0; i<scripts.length; i++)
+	     swapScript(scripts[i]);
        document.getElementById('import-container').appendChild(templateClone);
      }
 
