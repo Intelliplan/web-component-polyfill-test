@@ -4,25 +4,26 @@
     <meta charset="utf-8">
   </head>
   <body>
-    
-    <div id="import-container">
-      <link rel="import" id="myimport" href="component/comp.html"></link>
-    </div>
 
-    
     <script src="libs/webcomponentsjs-0.5.4/webcomponents.min.js"></script>
 
     <script type="text/javascript">
-  
-      var link = document.getElementById('myimport');
-      link.addEventListener('load', function () {
-        var myImport = link.import;
-        var templateInImport = myImport.querySelector('template');
-        var templateClone = document.importNode(templateInImport.content, true);
-        document.getElementById('import-container').appendChild(templateClone);
-      });
+     var importScript = function () {
+       var link = document.getElementById('myimport');
+       var myImport = link.import;
+       var templateInImport = myImport.querySelector('template');
+       var templateClone = document.importNode(templateInImport.content, true);
+       document.getElementById('import-container').appendChild(templateClone);
+     }
 
     </script>
+
+    
+    <div id="import-container">
+      <link rel="import" id="myimport" href="component/comp.html" onload="importScript();"></link>
+
+    </div>   
+
   </body>
 </html>
     </script>
